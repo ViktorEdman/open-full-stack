@@ -1,26 +1,39 @@
 import './App.css';
-import Display from './components/Display';
-import Button from './components/Button';
 import { useState } from "react"
+import Button from "./components/Button"
 
-function App() {
-  const [counter, setCounter] = useState(0)
-  const increaseByOne = () => setCounter(counter + 1)
-  const resetCounter = () => setCounter(0)
+const History = ({allClicks}) => allClicks.length === 0 
+?  <div>The app is used by pressing the left and right buttons</div> 
+: <div>{allClicks.join(" ")}</div>
 
 
+const App = () => {
+  const [left, setLeft] = useState(0)
+  const [right, setRight] = useState(0)
+  const [allClicks, setAll] = useState([])
+
+  const handleLeftClick = () => {
+    setAll(allClicks.concat('L'))
+    setLeft(left + 1)
+  }
+
+  const handleRightClick = () => {
+    setAll(allClicks.concat('R'))
+    setRight(right + 1)
+  }
 
   return (
     <>
-      <Display counter={counter}/>
+      Left: {left}
+      <Button 
+      onClick={handleLeftClick}
+      text="Left"/>
 
       <Button
-      onClick={increaseByOne}
-      text="Plus"/>
-
-      <Button
-      onClick={resetCounter}
-      text="Zero"/>
+      onClick={handleRightClick}
+      text="Right"/>
+      Right: {right}
+      <History allClicks={allClicks}/>
     </>
   );
 
