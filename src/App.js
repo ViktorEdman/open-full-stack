@@ -9,6 +9,7 @@ const App = () => {
   const [bad, setBad] = useState(0)
 
   const all = good+neutral+bad
+  const positivePercentage = `${(good/all)*100}%`
 
   const handleGoodClick = () => {
     setGood(good+1)
@@ -34,7 +35,7 @@ const App = () => {
       <p>Bad: {bad}</p>
       <p>All: {all}</p>
       <p>Average: {(good-bad)/all}</p>
-      <p>Positive: {(good/all)*100}%</p>
+      <p>Positive: {positivePercentage}</p>
     </div>
   )
 }
