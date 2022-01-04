@@ -1,22 +1,25 @@
 import React, { useState } from 'react'
-import Button from "./components/Button"
+
+const StatisticLine = ({statistic, text}) => <p>{text}: {statistic}</p>
 
 const Statistics = ({good, neutral, bad}) => {
   const total = good + neutral + bad
   const positivePercentage = `${(good / total) * 100}%`
+  const average = (good - bad) / total
   if (total === 0) return <p>No feedback given</p>
   return (
     <>
       <h2>Statistics</h2>
-      <p>Good: {good}</p>
-      <p>Neutral: {neutral}</p>
-      <p>Bad: {bad}</p>
-      <p>Total: {total}</p>
-      <p>Average: {(good - bad) / total}</p>
-      <p>Positive: {positivePercentage}</p>
+      <StatisticLine statistic={good} text="Good"/>
+      <StatisticLine statistic={neutral} text="Neutral"/>
+      <StatisticLine statistic={bad} text="Bad"/>
+      <StatisticLine statistic={total} text="Total"/>
+      <StatisticLine statistic={average} text="Average"/>
+      <StatisticLine statistic={positivePercentage} text="Positive"/>
     </>)
 }
 
+const Button = ({onClick, text}) => <button onClick={onClick}>{text}</button>
 
 const App = () => {
   // save clicks of each button to its own state
