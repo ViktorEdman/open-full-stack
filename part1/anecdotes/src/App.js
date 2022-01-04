@@ -4,9 +4,10 @@ const Button = ({ handleClick, text }) => {
   return <button onClick={handleClick}>{text}</button>
 }
 
-const Anecdote = ({ anecdote, votes }) => {
+const Anecdote = ({ anecdote, votes, title }) => {
   return (
     <>
+      <h2>{title}</h2>
       <div>{anecdote} </div>
       <div>has {votes} votes</div>
     </>
@@ -23,8 +24,6 @@ const App = () => {
     'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.',
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients'
   ]
-
-
 
   const [selected, setSelected] = useState(0)
   const [votes, setVotes] = useState(Array(anecdotes.length).fill(0))
@@ -46,12 +45,10 @@ const App = () => {
 
   return (
     <div>
-      <h2>Anecdote of the day</h2>
-      <Anecdote anecdote={anecdotes[selected]} votes={votes[selected]} />
+      <Anecdote title="Anecdote of the day"anecdote={anecdotes[selected]} votes={votes[selected]} />
       <Button handleClick={addVote} text="Vote" />
       <Button handleClick={getRandomAnecdote} text="Next Anecdote" />
-      <h2>Anecdote with the most votes</h2>
-      <Anecdote anecdote={anecdotes[highestVoteIndex]} votes={votes[highestVoteIndex]} />
+      <Anecdote title="Anecdote with the most votes" anecdote={anecdotes[highestVoteIndex]} votes={votes[highestVoteIndex]} />
     </div>
   )
 }
