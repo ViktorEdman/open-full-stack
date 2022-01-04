@@ -4,6 +4,7 @@ import Button from "./components/Button"
 const Statistics = ({good, neutral, bad}) => {
   const all = good + neutral + bad
   const positivePercentage = `${(good / all) * 100}%`
+  if (all === 0) return <p>No feedback given</p>
   return (
     <>
       <h2>Statistics</h2>
@@ -38,12 +39,19 @@ const App = () => {
     setBad(bad + 1)
   }
 
+  const reset = () => {
+    setBad(0)
+    setGood(0)
+    setNeutral(0)
+  }
+
   return (
     <div>
       <h1>Give feedback</h1>
       <Button onClick={handleGoodClick} text="Good" />
       <Button onClick={handleNeutralClick} text="Neutral" />
       <Button onClick={handleBadClick} text="Bad" />
+      <Button onClick={reset} text="Reset"/>
       <Statistics good={good} neutral={neutral} bad={bad}/>
     </div>
   )
