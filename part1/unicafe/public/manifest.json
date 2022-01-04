@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Unicafe",
+  "name": "Unicafe part 1 assignment from open fullstack",
   "icons": [],
   "start_url": ".",
   "display": "standalone",
