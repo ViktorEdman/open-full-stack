@@ -2,17 +2,17 @@ import React, { useState } from 'react'
 import Button from "./components/Button"
 
 const Statistics = ({good, neutral, bad}) => {
-  const all = good + neutral + bad
-  const positivePercentage = `${(good / all) * 100}%`
-  if (all === 0) return <p>No feedback given</p>
+  const total = good + neutral + bad
+  const positivePercentage = `${(good / total) * 100}%`
+  if (total === 0) return <p>No feedback given</p>
   return (
     <>
       <h2>Statistics</h2>
       <p>Good: {good}</p>
       <p>Neutral: {neutral}</p>
       <p>Bad: {bad}</p>
-      <p>All: {all}</p>
-      <p>Average: {(good - bad) / all}</p>
+      <p>Total: {total}</p>
+      <p>Average: {(good - bad) / total}</p>
       <p>Positive: {positivePercentage}</p>
     </>)
 }
