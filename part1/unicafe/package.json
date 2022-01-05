@@ -23,6 +23,7 @@
       "react-app/jest"
     ]
   },
+  "homepage": "/unicafe",
   "browserslist": {
     "production": [
       ">0.2%",
