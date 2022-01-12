@@ -48,7 +48,9 @@ const App = () => {
   }
 
   const filteredPersons = filter 
-        ? persons.filter(person => person.name.toLowerCase().includes(filter.toLowerCase()))
+        ? persons.filter(person => person.name
+                                          .toLowerCase()
+                                          .includes(filter.toLowerCase()))
         : persons
 
   return (
