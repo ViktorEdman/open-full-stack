@@ -4,6 +4,8 @@ import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
 
+const API_BASE_PATH = 'http://localhost:3001/persons'
+
 const App = () => {
   const [persons, setPersons] = useState([]) 
   const [newName, setNewName] = useState('')
@@ -12,7 +14,7 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3001/persons')
+      .get(API_BASE_PATH)
       .then(response => {
         setPersons(response.data)
       })
@@ -43,6 +45,9 @@ const App = () => {
       return
     }
     setPersons(persons.concat(personObject))
+    axios.post(API_BASE_PATH, personObject)
+          .then(res => {console.log("Posted", res)})
+          .catch(e => {console.log("Could not post", e)})
     setNewName('')
     setNewNumber('')
   }
