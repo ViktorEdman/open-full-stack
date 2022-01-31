@@ -3,6 +3,8 @@ import { useEffect, useState } from "react"
 import CountryList from "./components/CountryList";
 import Country from "./components/Country";
 
+const WEATHER_API_KEY = process.env.REACT_APP_API_KEY ?? ""
+
 function App() {
   const [data, setData] = useState([])
   const [filter, setFilter] = useState("")
@@ -42,7 +44,8 @@ function App() {
       {
         filteredCountries.length === 1
             ? <Country 
-                country={filteredCountries[0]}/>
+                country={filteredCountries[0]}
+                apiKey={WEATHER_API_KEY}/>
             : filteredCountries.length <= 10
             ? <CountryList countries={filteredCountries} clickHandler={setFilter}/>
             : <div>Too many matched, specify another filter.</div>
