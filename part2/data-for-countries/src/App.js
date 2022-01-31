@@ -36,6 +36,7 @@ function App() {
         type="text"
         name="name-filter"
         onChange={handleFilterChange}
+        value={filter}
       />
       <h2>Output</h2>
       {
@@ -43,7 +44,7 @@ function App() {
             ? <Country 
                 country={filteredCountries[0]}/>
             : filteredCountries.length <= 10
-            ? <CountryList countries={filteredCountries} />
+            ? <CountryList countries={filteredCountries} clickHandler={setFilter}/>
             : <div>Too many matched, specify another filter.</div>
       }
     </div>
